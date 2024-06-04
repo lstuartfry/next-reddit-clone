@@ -11,6 +11,7 @@ if (!GITHUB_CLIENT_ID) throw new Error("missing github client id");
 if (!GITHUB_CLIENT_SECRET) throw new Error("missing github client secret");
 
 export const {
+  // handlers are imported in src/app/api/auth/[...nextauth]/routes.ts
   handlers: { GET, POST },
   auth,
   signIn,
