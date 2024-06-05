@@ -17,11 +17,15 @@ export default function HeaderAuth() {
 
   let authContent: JSX.Element;
 
-  if (session?.data?.user) {
+  if (session.status === "loading") return null;
+  else if (session?.data?.user) {
     authContent = (
       <Popover placement="left">
         <PopoverTrigger>
-          <Avatar src={session.data.user.image || ""} />
+          <Avatar
+            className="cursor-pointer"
+            src={session.data.user.image || ""}
+          />
         </PopoverTrigger>
         <PopoverContent>
           <div className="p-4">
