@@ -1,3 +1,5 @@
 "use server";
 
-export async function createComment() {}
+export async function createComment() {
+  // relvaidate post show page
+}

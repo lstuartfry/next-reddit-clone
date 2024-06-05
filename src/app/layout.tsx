@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import Header from "@/components/header";
 import Providers from "./providers";
 import "./globals.css";
 
@@ -16,7 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>{children}</Providers>
+        <div className="container mx-auth px-4 max-w-6xl">
+          <Providers>
+            <Header />
+            {children}
+          </Providers>
+        </div>
       </body>
     </html>
   );
