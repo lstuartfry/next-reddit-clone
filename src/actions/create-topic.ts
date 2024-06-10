@@ -34,7 +34,7 @@ export async function createTopic(
 ): Promise<FormState> {
   // check if user is signed in. If not, return an error message.
   const session = await auth();
-  if (!session || session.user) {
+  if (!session || !session.user) {
     return {
       errors: {
         _form: ["You must be signed in to create a topic"],
