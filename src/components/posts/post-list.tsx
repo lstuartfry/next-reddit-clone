@@ -1,14 +1,21 @@
-import type { Post, User, Topic } from '@prisma/client';
-import Link from 'next/link';
-import paths from '@/paths';
+import Link from "next/link";
 
-// TODO: Get list of posts into this component somehow
-export default function PostList() {
+import { paths } from "@/paths";
+import { type PostWithMetadata } from "@/db/queries/posts";
+// import { db } from "@/db";
+
+interface Props {
+  fetchPosts: () => Promise<PostWithMetadata[]>;
+}
+
+export default async function PostList({ fetchPosts }: Props) {
+  const posts = await fetchPosts();
+
   const renderedPosts = posts.map((post) => {
     const topicSlug = post.topic.slug;
 
     if (!topicSlug) {
-      throw new Error('Need a slug to link to a post');
+      throw new Error("Need a slug to link to a post");
     }
 
     return (
