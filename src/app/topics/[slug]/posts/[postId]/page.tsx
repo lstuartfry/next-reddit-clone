@@ -6,6 +6,7 @@ import CommentList from "@/components/comments/comment-list";
 import CommentCreateForm from "@/components/comments/comment-create-form";
 import { paths } from "@/paths";
 import { db } from "@/db";
+import { fetchCommentsByPostId } from "@/db/queries/comments";
 
 type Props = {
   params: {
@@ -33,8 +34,8 @@ export default async function PostShowPage({ params }: Props) {
         {"< "}Back to {slug}
       </Link>
       <PostShow post={post} />
-      {/* <CommentCreateForm postId={postId} startOpen /> */}
-      {/* <CommentList comments={comments} /> */}
+      <CommentCreateForm postId={postId} startOpen />
+      <CommentList fetchComments={() => fetchCommentsByPostId(postId)} />
     </div>
   );
 }
