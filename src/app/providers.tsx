@@ -3,11 +3,11 @@
 import { NextUIProvider } from "@nextui-org/react";
 import { SessionProvider } from "next-auth/react";
 
-interface ProvidersProps {
+type Props = {
   children: React.ReactNode;
-}
+};
 
-export default function Providers({ children }: ProvidersProps) {
+export default function Providers({ children }: Props) {
   return (
     <SessionProvider>
       <NextUIProvider>{children}</NextUIProvider>

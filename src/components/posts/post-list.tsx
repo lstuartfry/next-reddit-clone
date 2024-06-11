@@ -1,12 +1,11 @@
 import Link from "next/link";
 
 import { paths } from "@/paths";
-import { type PostWithMetadata } from "@/db/queries/posts";
-// import { db } from "@/db";
+import { type EnrichedPost } from "@/db/queries/posts";
 
-interface Props {
-  fetchPosts: () => Promise<PostWithMetadata[]>;
-}
+type Props = {
+  fetchPosts: () => Promise<EnrichedPost[]>;
+};
 
 export default async function PostList({ fetchPosts }: Props) {
   const posts = await fetchPosts();

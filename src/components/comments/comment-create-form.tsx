@@ -3,14 +3,14 @@
 import { useFormState } from "react-dom";
 import { useEffect, useRef, useState } from "react";
 import { Textarea, Button } from "@nextui-org/react";
-import FormButton from "@/components/common/form-button";
+import SubmitFormButton from "@/components/common/submit-form-button";
 import * as actions from "@/actions";
 
-interface CommentCreateFormProps {
+type Props = {
   postId: string;
   parentId?: string;
   startOpen?: boolean;
-}
+};
 
 export default function CommentCreateForm({
   postId,
@@ -51,7 +51,7 @@ export default function CommentCreateForm({
           </div>
         ) : null}
 
-        <FormButton>Create Comment</FormButton>
+        <SubmitFormButton>Create Comment</SubmitFormButton>
       </div>
     </form>
   );

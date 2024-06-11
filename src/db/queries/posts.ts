@@ -1,15 +1,10 @@
-import { type Post } from "@prisma/client";
 import { db } from "..";
 
-export interface PostWithMetadata extends Post {
-  topic: { slug: string };
-  user: { name: string | null };
-  _count: { comments: number };
-}
+export type EnrichedPost = Awaited<
+  ReturnType<typeof fetchPostsByTopicSlug>
+>[number];
 
-export function fetchPostsByTopicSlug(
-  slug: string
-): Promise<PostWithMetadata[]> {
+export function fetchPostsByTopicSlug(slug: string) {
   return db.post.findMany({
     where: {
       topic: { slug },

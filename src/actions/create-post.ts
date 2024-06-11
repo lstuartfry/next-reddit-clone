@@ -14,13 +14,13 @@ const createTopicSchema = z.object({
   content: z.string().min(10),
 });
 
-interface FormState {
+type FormState = {
   errors?: {
     _form?: string[];
     title?: string[];
     content?: string[];
   };
-}
+};
 
 export async function createPost(
   slug: string,

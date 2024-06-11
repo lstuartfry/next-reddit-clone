@@ -1,6 +1,6 @@
 import CommentShow from "@/components/comments/comment-show";
 
-interface CommentListProps {}
+type CommentListProps = {};
 
 // TODO: Get a list of comments from somewhere
 export default function CommentList({}: CommentListProps) {

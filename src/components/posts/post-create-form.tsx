@@ -13,9 +13,9 @@ import {
 import * as actions from "@/actions";
 import SubmitFormButton from "@/components/common/submit-form-button";
 
-interface Props {
+type Props = {
   slug: string;
-}
+};
 
 export default function PostCreateForm({ slug }: Props) {
   const [formState, action] = useFormState(

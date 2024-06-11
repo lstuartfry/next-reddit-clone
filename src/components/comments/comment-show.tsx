@@ -2,9 +2,9 @@ import Image from "next/image";
 import { Button } from "@nextui-org/react";
 import CommentCreateForm from "@/components/comments/comment-create-form";
 
-interface CommentShowProps {
+type Props = {
   commentId: string;
-}
+};
 
 // TODO: Get a list of comments
 export default function CommentShow({ commentId }: CommentShowProps) {

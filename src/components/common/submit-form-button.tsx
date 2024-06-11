@@ -3,9 +3,9 @@
 import { useFormStatus } from "react-dom";
 import { Button } from "@nextui-org/react";
 
-interface Props {
+type Props = {
   children: React.ReactNode;
-}
+};
 
 export default function SubmitFormButton({ children }: Props) {
   const { pending } = useFormStatus();
