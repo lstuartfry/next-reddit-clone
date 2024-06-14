@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 import PostShow from "@/components/posts/post-show";
 import CommentList from "@/components/comments/comment-list";
 import CommentCreateForm from "@/components/comments/comment-create-form";
 import { paths } from "@/paths";
 import { db } from "@/db";
+import PostShowLoading from "@/components/posts/post-show-loading";
 
 type Props = {
   params: {
@@ -32,7 +34,9 @@ export default async function PostShowPage({ params }: Props) {
       <Link className="underline decoration-solid" href={paths.topicShow(slug)}>
         {"< "}Back to {slug}
       </Link>
-      <PostShow post={post} />
+      <Suspense fallback={<PostShowLoading />}>
+        <PostShow post={post} />
+      </Suspense>
       <CommentCreateForm postId={postId} startOpen />
       <CommentList postId={postId} />
     </div>
