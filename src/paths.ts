@@ -2,6 +2,9 @@ export const paths = {
   home() {
     return "/";
   },
+  search(term: string) {
+    return `/search?term=${term}`;
+  },
   topicShow(topicSlug: string) {
     return `/topics/${topicSlug}`;
   },

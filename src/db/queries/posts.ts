@@ -1,8 +1,33 @@
 import { db } from "..";
 
 export type EnrichedPost = Awaited<
-  ReturnType<typeof fetchPostsByTopicSlug | typeof fetchPostsByTopicSlug>
+  ReturnType<
+    | typeof fetchPostsByTopicSlug
+    | typeof fetchPostsByTopicSlug
+    | typeof fetchPostsBySearchTerm
+  >
 >[number];
+
+export function fetchPostsBySearchTerm(term: string) {
+  return db.post.findMany({
+    include: {
+      topic: {
+        select: { slug: true },
+      },
+      user: {
+        select: { name: true, image: true },
+      },
+      _count: {
+        select: {
+          comments: true,
+        },
+      },
+    },
+    where: {
+      OR: [{ title: { contains: term } }, { content: { contains: term } }],
+    },
+  });
+}
 
 export function fetchPostsByTopicSlug(slug: string) {
   return db.post.findMany({
